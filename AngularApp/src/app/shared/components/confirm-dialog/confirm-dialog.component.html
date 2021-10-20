@@ -1,0 +1,19 @@
+<h1 mat-dialog-title fxLayout="row" fxLayoutAlign="center center">
+  <div>
+    <mat-icon [ngStyle]="{'color': dialogStatus === 'warning' && title ? '#ffc107' : ''}"
+              [ngClass]="dialogStatus === 'warning' && !title ? 'warning' :
+              ((dialogStatus === 'confirm' || dialogStatus === 'warning' && title) ? 'confirm' : 'close-icon')">
+      {{(dialogStatus === 'warning' || dialogStatus === 'virus') ? 'info' : (dialogStatus === 'confirm' ? 'done' : 'close')}}
+    </mat-icon>
+    <b>{{title}}</b>
+  </div>
+</h1>
+
+<div mat-dialog-content>
+  <p class="confirm-message">{{message}}</p>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary" class="cancel-btn" (click)="onDismiss()">{{dialogStatus === 'virus' ? 'Ok' : 'No'}}</button>
+  <button *ngIf="dialogStatus !== 'virus'" mat-raised-button color="primary" class="accept-btn" (click)="onConfirm()">Yes</button>
+</div>

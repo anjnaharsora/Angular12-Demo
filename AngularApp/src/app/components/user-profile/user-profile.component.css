@@ -1,0 +1,19 @@
+.profile-empty-dialogue {
+  align-items: center;
+  justify-content: center;
+  height: 20vh;
+  flex-direction: column;
+  color: #00000675;
+}
+
+.profile-empty-dialogue mat-icon {
+  height: 35px;
+  width: 35px;
+  font-size: 40px;
+}
+
+.profile-empty-dialogue p {
+  color: #000006bd;
+  font-size: 20px;
+  margin: 15px 0 0 0;
+}

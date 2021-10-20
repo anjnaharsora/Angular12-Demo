@@ -1,0 +1,59 @@
+.user-table th,
+.user-table td {
+  padding: 5px 10px;
+}
+
+.user-table th:first-of-type,
+.user-table td:first-of-type {
+  padding-left: 10px;
+}
+
+.user-table th:last-of-type, .tag-table td:last-of-type {
+  padding-right: 10px;
+}
+
+.user-table tr th {
+  background-color: #e2e2e2;
+}
+
+.user-table th.mat-sort-header-sorted {
+  color: black;
+}
+
+.mat-column-productId {
+  width: 32px;
+  border-right: 1px solid currentColor;
+  padding-right: 24px;
+  text-align: center;
+}
+
+.user-empty-dialogue {
+  align-items: center;
+  justify-content: center;
+  height: 20vh;
+  flex-direction: column;
+  color: #00000675;
+}
+
+.user-empty-dialogue mat-icon {
+  height: 35px;
+  width: 35px;
+  font-size: 40px;
+}
+
+.user-empty-dialogue p {
+  color: #000006bd;
+  font-size: 20px;
+  margin: 15px 0 0 0;
+}
+
+.clear-button {
+  float: left;
+}
+
+.edit-icon {
+  line-height: 30px;
+  height: 30px;
+  width: 30px;
+  margin-top: -3px;
+}

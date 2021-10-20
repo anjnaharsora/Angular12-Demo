@@ -1,0 +1,33 @@
+<div class="container">
+  <div *ngIf="loadStatus === loadStatusEnum.Loaded" class="inner-main">
+    <mat-card>
+      <div>
+        <p><strong>Name : </strong>{{currentUser?.name}}</p>
+        <p><strong>Email : </strong>{{currentUser?.email}}</p>
+        <p><strong>Role : </strong>{{(currentUser?.isAdmin) ? 'Admin' : 'User'}}</p>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="end">
+        <button mat-raised-button color="primary" (click)="editUser(currentUser)">Edit</button>
+      </div>
+    </mat-card>
+  </div>
+
+  <div  *ngIf="loadStatus === loadStatusEnum.Loading || loadStatus === loadStatusEnum.Fresh" class="inner-main">
+    <mat-card>
+      <div class="profile-empty-dialogue" fxLayoutAlign="center center" fxLayout="column">
+        <mat-icon>info_outline</mat-icon>
+        <p>Loading...</p>
+      </div>
+    </mat-card>
+  </div>
+
+  <div *ngIf="loadStatus === loadStatusEnum.Failed" class="inner-main">
+    <mat-card>
+      <div class="profile-empty-dialogue" fxLayoutAlign="center center" fxLayout="column">
+        <mat-icon>info_outline</mat-icon>
+        <p>Unable to found profile</p>
+      </div>
+    </mat-card>
+  </div>
+</div>
+

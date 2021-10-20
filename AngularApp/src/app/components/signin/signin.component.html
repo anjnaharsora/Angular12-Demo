@@ -1,0 +1,22 @@
+<div class="auth-wrapper" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card style="width: 350px">
+    <form [formGroup]="signinForm" (ngSubmit)="loginUser()" fxLayout="column">
+      <h3 class="h3 mb-3 font-weight-normal text-center">Please sign in</h3>
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" placeholder="Enter email" required>
+        <mat-error>
+          <span *ngIf="!signinForm.get('email')?.valid">Please enter a email</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput formControlName="password" placeholder="Password" required>
+        <mat-error>
+          <span *ngIf="!signinForm.get('password')?.valid">Please enter a password</span>
+        </mat-error>
+      </mat-form-field>
+      <button type="submit" [disabled]="!signinForm?.valid" class="btn btn-block btn-primary sign-btn">Sign in</button>
+    </form>
+  </mat-card>
+</div>

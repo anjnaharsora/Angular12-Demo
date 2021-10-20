@@ -1,0 +1,16 @@
+[
+  {
+    "productId": 1,
+    "name": "Product1",
+    "manufacturer": "Man1",
+    "description": "Desc1",
+    "price": 1000
+  },
+  {
+    "productId": 2,
+    "name": "Product2",
+    "manufacturer": "Man2",
+    "description": "Desc2",
+    "price": 20000
+  }
+]

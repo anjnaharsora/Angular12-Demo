@@ -1,0 +1,89 @@
+<div style="padding: 25px 50px">
+  <div fxLayout="row" fxLayoutAlign="end" style="padding-bottom: 20px">
+    <button type="button" mat-raised-button color="primary" (click)="addEditProduct('Add')">Add Product</button>
+  </div>
+
+  <div *ngIf="products && products?.length && loadStatus === loadStatusEnum.Loaded">
+    <mat-card fxLayout="column">
+      <div fxFlex="100%" fxLayout="row">
+        <mat-form-field style="width: 100%">
+          <input matInput (keyup)="applyFilter($event)" placeholder="Filter" #filterBox>
+          <button mat-button *ngIf="filterBox.value" matSuffix mat-icon-button aria-label="Clear" class="clear-button"
+                  (click)="filterBox.value=''; applyFilter($event);">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="row">
+        <table fxFlex="100%" mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 product-table">
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+            <td mat-cell *matCellDef="let element">{{element.name}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="manufacturer">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Manufacturer</th>
+            <td mat-cell *matCellDef="let element">{{element.manufacturer}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+            <td mat-cell *matCellDef="let element">{{element.description}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="added_by">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Added By</th>
+            <td mat-cell *matCellDef="let element">{{element.userEmail}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Price</th>
+            <td mat-cell *matCellDef="let element">{{element.price}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>Actions</th>
+            <td mat-cell *matCellDef="let element">
+              <div fxLayoutGap="10px">
+                <button color="primary" matTooltip="Edit Product" matTooltipPosition="below" mat-icon-button (click)="addEditProduct('Edit', element)" class="edit-icon">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button color="warn" matTooltip="Delete Product" matTooltipPosition="below" mat-icon-button (click)="deleteProduct(element)" class="edit-icon">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns" class=""></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+      <div>
+        <mat-paginator #paginator [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 15]" [showFirstLastButtons]="true" [length]="products.length"></mat-paginator>
+      </div>
+    </mat-card>
+  </div>
+
+  <mat-card *ngIf="((!products || !products?.length) && loadStatus === loadStatusEnum.Loaded) ||  loadStatus === loadStatusEnum.LoadedEmpty">
+    <div class="product-empty-dialogue" fxLayoutAlign="center center" fxLayout="column">
+      <mat-icon>info_outline</mat-icon>
+      <p>Not found any product</p>
+    </div>
+  </mat-card>
+
+  <mat-card *ngIf="loadStatus === loadStatusEnum.Loading || loadStatus === loadStatusEnum.Fresh">
+    <div class="product-empty-dialogue" fxLayoutAlign="center center" fxLayout="column">
+      <mat-icon>info_outline</mat-icon>
+      <p>Loading...</p>
+    </div>
+  </mat-card>
+
+  <mat-card *ngIf="loadStatus === loadStatusEnum.Failed">
+    <div class="product-empty-dialogue" fxLayoutAlign="center center" fxLayout="column">
+      <mat-icon>info_outline</mat-icon>
+      <p>Unable to found product</p>
+    </div>
+  </mat-card>
+</div>

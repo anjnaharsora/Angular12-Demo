@@ -1,0 +1,67 @@
+.mat-dialog-title {
+  margin: 0;
+}
+
+.close-icon.mat-icon {
+  color: #f15e5d;
+  border: 2px solid;
+  border-radius: 100%;
+  padding: 10px;
+  display: block;
+  font-size: 50px;
+  margin: 10px 0 10px 0;
+  width: 50px;
+  height: 50px;
+}
+
+.warning.mat-icon {
+  color: #ffc107;
+  padding: 0;
+  font-size: 70px;
+  width: 70px;
+  height: 70px;
+}
+
+.confirm.mat-icon {
+  color: green;
+  border: 2px solid;
+  border-radius: 100%;
+  padding: 10px;
+  display: block;
+  font-size: 50px;
+  margin: 10px 0 20px 60px;
+  width: 50px;
+  height: 50px;
+}
+
+.mat-dialog-actions {
+  justify-content: center;
+  margin-bottom: -8px;
+  margin-top: 8px;
+}
+
+.cancel-btn {
+  background-color: #c1c1c1;
+}
+
+.mat-raised-button {
+  min-width: 140px;
+}
+
+.confirm-message {
+  text-align: center;
+  width: 100%;
+  overflow: hidden auto;
+  word-break: break-word;
+}
+
+.close-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.close-dialog-icon {
+  position: absolute;
+  right: 15px;
+}

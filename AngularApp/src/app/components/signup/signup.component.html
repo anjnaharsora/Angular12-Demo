@@ -1,0 +1,34 @@
+<div class="auth-wrapper" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card style="width: 350px">
+    <form [formGroup]="signupForm" (ngSubmit)="registerUser()" fxLayout="column">
+      <h3 class="h3 mb-3 font-weight-normal text-center">Please sign up</h3>
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" placeholder="Enter name" required>
+        <mat-error>
+          <span *ngIf="!signupForm.get('name')?.valid">Please enter a name</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Email address</mat-label>
+        <input matInput formControlName="email" placeholder="Enter email" required>
+        <mat-error>
+          <span *ngIf="!signupForm.get('email')?.valid">Please enter a email</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput formControlName="password" placeholder="Password" required>
+        <mat-error>
+          <span *ngIf="!signupForm.get('password')?.valid">Please enter a password</span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-radio-group formControlName="isAdmin" class="signup-option">
+        <mat-radio-button value="user">User</mat-radio-button>
+        <mat-radio-button value="admin">Admin</mat-radio-button>
+      </mat-radio-group>
+      <button type="submit" [disabled]="!signupForm?.valid" class="btn btn-block btn-primary sign-btn">Sign up</button>
+    </form>
+  </mat-card>
+</div>

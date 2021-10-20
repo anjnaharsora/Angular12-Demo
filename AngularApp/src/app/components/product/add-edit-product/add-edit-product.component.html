@@ -1,0 +1,56 @@
+<div mat-dialog-title fxLayout="row" fxLayoutAlign="center center" style="position: relative">
+  <h3><b>{{isEdit ? 'Edit Product' : 'Add Product'}}</b></h3>
+  <button mat-icon-button (click)="cancel()" class="close-dialog-icon">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+
+<div mat-dialog-content>
+  <mat-divider style="padding: 10px"></mat-divider>
+  <div *ngIf="addEditForm">
+    <form #formDirective="ngForm" [formGroup]="addEditForm" fxLayout="column">
+      <mat-form-field appearance="outline">
+        <mat-label>Product Name</mat-label>
+        <input matInput formControlName="name" placeholder="Product Name" required>
+        <mat-error>
+          <span *ngIf="!addEditForm.get('name')?.valid">Please enter a product name</span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Manufacturer</mat-label>
+        <input matInput formControlName="manufacturer" placeholder="Manufacturer" required>
+        <mat-error>
+          <span *ngIf="!addEditForm.get('manufacturer')?.valid">Please enter Manufacturer</span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <input matInput formControlName="description" placeholder="Description">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Price</mat-label>
+        <input type="number" matInput formControlName="price" placeholder="Price" required>
+        <mat-error>
+          <span *ngIf="!addEditForm.get('price')?.valid">Please enter a price</span>
+        </mat-error>
+      </mat-form-field>
+    </form>
+  </div>
+
+  <div *ngIf="!addEditForm">
+    <ng-container>
+      <div class="empty-dialogue" fxLayoutAlign="center center" fxLayout="column">
+        <mat-icon>info_outline</mat-icon>
+        <p>Loading....</p>
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-raised-button color="warn" (click)="cancel()" style="width: 197px">Cancel</button>
+  <button mat-raised-button color="primary" [disabled]="!addEditForm?.valid || (isEdit && isDisabled())" (click)="submit()" style="width: 197px">{{isEdit ? 'Edit Product' : 'Add Product'}}</button>
+</div>
