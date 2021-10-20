@@ -5,11 +5,11 @@
 * GET (user profile)	  **/api/user-profile/id**
 * PUT (update user)	  **/api/update-user/id**
 * DELETE (delete user)  **/api/delete-user/id**
-* GET (products list)  **/api/products
-* GET (get products according to user) **/api/products/:userId
-* POST (Add a new product)  **/api/products/add
-* PUT (Update product) **/api/update-product/:productId
-* DELETE (Delete a product) **/api/delete-product/:productId
+* GET (products list)  **/api/products**
+* GET (get products according to user) **/api/products/:userId**
+* POST (Add a new product)  **/api/products/add**
+* PUT (Update product) **/api/update-product/:productId**
+* DELETE (Delete a product) **/api/delete-product/:productId**
 
 
 ## Required
